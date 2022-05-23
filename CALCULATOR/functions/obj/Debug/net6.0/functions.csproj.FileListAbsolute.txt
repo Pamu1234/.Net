@@ -1,0 +1,12 @@
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\bin\Debug\net6.0\functions.deps.json
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\bin\Debug\net6.0\functions.dll
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\bin\Debug\net6.0\functions.pdb
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.csproj.AssemblyReference.cache
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.AssemblyInfoInputs.cache
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.AssemblyInfo.cs
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.csproj.CoreCompileInputs.cache
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.dll
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\refint\functions.dll
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\functions.pdb
+C:\Users\QualMinds User\source\repos\CALCULATOR\functions\obj\Debug\net6.0\ref\functions.dll
