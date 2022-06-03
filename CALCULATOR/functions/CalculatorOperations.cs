@@ -1,6 +1,6 @@
 ﻿namespace functions
 {
-    public class Class1
+    public class CalculatorOperations
     {
         public static int Addition(int num1,int num2)
         { 
