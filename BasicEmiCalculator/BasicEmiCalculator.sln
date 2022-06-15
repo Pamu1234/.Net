@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicEmiCalculator", "BasicEmiCalculator\BasicEmiCalculator.csproj", "{C14CEFE4-6B75-412F-A99F-55C836C38107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmiCalculations", "EmiCalculations\EmiCalculations.csproj", "{EA3F734B-532F-4E3A-82C1-4EB93B130FCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C14CEFE4-6B75-412F-A99F-55C836C38107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C14CEFE4-6B75-412F-A99F-55C836C38107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C14CEFE4-6B75-412F-A99F-55C836C38107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C14CEFE4-6B75-412F-A99F-55C836C38107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3F734B-532F-4E3A-82C1-4EB93B130FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3F734B-532F-4E3A-82C1-4EB93B130FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3F734B-532F-4E3A-82C1-4EB93B130FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3F734B-532F-4E3A-82C1-4EB93B130FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FB46AA0-E4E2-45DD-8831-CF182AF3C947}
+	EndGlobalSection
+EndGlobal
