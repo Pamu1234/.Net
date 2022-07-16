@@ -1,5 +1,5 @@
 ﻿using EmiCalculations;
-
+using System;
 Console.WriteLine("Enter product price:");
 long totalAmount = Convert.ToInt32(Console.ReadLine());
 
