@@ -1,6 +1,7 @@
 ﻿using Qualminds.Ems.Core.Constants;
 using Qualminds.Ems.Core.Contracts.Infrastructure;
 using Qualminds.Ems.Core.Entities;
+using System.Text;
 
 namespace Qualminds.Ems.Infrastructure.IO
 {
@@ -8,6 +9,7 @@ namespace Qualminds.Ems.Infrastructure.IO
    {
       
       private readonly string _filePath;
+        StringBuilder stringBuilder = new StringBuilder();
 
       public EmployeeService(string filePath)
       {
@@ -50,17 +52,17 @@ namespace Qualminds.Ems.Infrastructure.IO
          throw new NotImplementedException();
       }
 
-      public IEnumerable<Employee> GetEmployees()
+      public StringBuilder GetEmployees()
       {
          var employeesCommaSeparatedList = File.ReadAllLines(_filePath).Skip(1);
          //var employees = new List<Employee>();   // Replaced with yield return.
          foreach (var employeeRow in employeesCommaSeparatedList)
          {
             var employeeData = employeeRow.Split(FileConstants.Delimeter);
-            yield return new Employee { Id = Guid.Parse(employeeData[0]), Name = employeeData[1], Designation = employeeData[2] };
+                stringBuilder.AppendLine($"{Guid.Parse(employeeData[0])}\t{employeeData[1]}\t{employeeData[2] }");
             //employees.Add(employee);
          }
-         //return employees;
+         return stringBuilder;
       }
 
       public void DeleteEmployees()
