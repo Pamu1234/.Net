@@ -43,6 +43,7 @@ do
     {
         break;
     }
+    
     Console.WriteLine("Do you want to add more:\n\t enter 'yes' for continue and 'no' for exit");
     AddMoreOption = Console.ReadLine();
 } while (AddMoreOption == "yes");
