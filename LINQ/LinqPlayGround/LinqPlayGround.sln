@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqPlayGround", "LinqPlayGround\LinqPlayGround.csproj", "{96E0C03E-B721-4DB4-A583-A8A8C4414656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqPlayGround.Core", "LinqPlayGround.Core\LinqPlayGround.Core.csproj", "{DAEFAB8C-AAF9-4AB6-86A4-426312E59279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96E0C03E-B721-4DB4-A583-A8A8C4414656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E0C03E-B721-4DB4-A583-A8A8C4414656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E0C03E-B721-4DB4-A583-A8A8C4414656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E0C03E-B721-4DB4-A583-A8A8C4414656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEFAB8C-AAF9-4AB6-86A4-426312E59279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEFAB8C-AAF9-4AB6-86A4-426312E59279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEFAB8C-AAF9-4AB6-86A4-426312E59279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEFAB8C-AAF9-4AB6-86A4-426312E59279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9894497C-4FA1-4947-8E6E-22B632EA31E9}
+	EndGlobalSection
+EndGlobal
