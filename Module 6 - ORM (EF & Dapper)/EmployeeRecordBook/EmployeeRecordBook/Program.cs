@@ -32,10 +32,17 @@ IMapper mapper = config.CreateMapper();
 using (var employeeContext = new EmployeeContext())
 {
     IEmployeeRepository employeeRepository = new EmployeeRepository(employeeContext);
-    var employees = await employeeRepository.GetEmployeesAsync();
-    foreach (var employee in employees)
+    try
     {
-        Console.WriteLine($"{employee.Id} {employee.Name} {employee.Salary} {employee.Email} {employee.DepartmentName}");
+        var employees = await employeeRepository.GetEmployeesAsync(1, 5, "Id", filterText: "Parm".ToLower());
+        foreach (var employee in employees)
+        {
+            Console.WriteLine($"{employee.Id} {employee.Name} {employee.Salary} {employee.Email} {employee.DepartmentName}");
+        }
+    }
+    catch(ArgumentOutOfRangeException e)
+    {
+        Console.WriteLine(e.Message);
     }
     //await employeeRepository.CreateRangeAsync(new List<Employee>
     //{
