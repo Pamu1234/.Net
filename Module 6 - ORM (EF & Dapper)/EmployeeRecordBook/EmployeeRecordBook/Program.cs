@@ -1,11 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AutoMapper;
 using EmployeeRecordBook.Configurations;
-using EmployeeRecordBook.Core.Contracts.Infrastructure;
-using EmployeeRecordBook.Core.Entities;
 using EmployeeRecordBook.Infrastructure.Data;
 using EmployeeRecordBook.Infrastructure.Repositories;
-using EmployeeRecordBook.ViewModels;
 
 Console.WriteLine("Hello, World!");
 
@@ -28,7 +25,21 @@ IMapper mapper = config.CreateMapper();
 //      new Department() { Id = 3, Name = "Accounting" }
 //   }
 //   );
+Console.WriteLine("Dept data:");
+using(var employeeContext = new EmployeeContext())
+{
+    IDepartmentRepository departmentRepository = new DepartmentRepository(employeeContext);
+   
+        var departments = await departmentRepository.GetDepartmentsAsync(1,2,"Name");
+        foreach (var department in departments)
+        {
+            Console.WriteLine($"{department.Name} {department.Id}");
+        }
 
+
+}
+
+Console.WriteLine("Dept data: end");
 using (var employeeContext = new EmployeeContext())
 {
     IEmployeeRepository employeeRepository = new EmployeeRepository(employeeContext);

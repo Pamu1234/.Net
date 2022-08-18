@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EmployeeRecordBook.Core.Dtos
+﻿namespace EmployeeRecordBook.Core.Dtos
 {
-   public class EmployeeDto
+    public class EmployeeDto
    {
       public int Id { get; set; }
       public string Name { get; set; } = null!;
