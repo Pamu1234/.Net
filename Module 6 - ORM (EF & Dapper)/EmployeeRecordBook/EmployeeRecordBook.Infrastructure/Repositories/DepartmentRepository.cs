@@ -1,6 +1,7 @@
 ﻿using EmployeeRecordBook.Core.Dtos;
 using EmployeeRecordBook.Core.Entities;
 using EmployeeRecordBook.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeRecordBook.Infrastructure.Repositories
 {
@@ -20,13 +21,13 @@ namespace EmployeeRecordBook.Infrastructure.Repositories
 
         public async Task<IEnumerable<DepartmentDto>> GetDepartmentsAsync(int pageIndex, int pageSize, string sortField, string? sortOrder = "asc", string? filterText = null)
         {
-            var departmentList =  from dept in _employeeContext.Departments
-                                 .Where(e => e.Name.ToLower().Contains(filterText) || filterText==null)
-                                 select new DepartmentDto
-                                 {
-                                     Name = dept.Name,
-                                     Id = dept.Id
-                                 };
+            var departmentList = await (from dept in _employeeContext.Departments
+                                 .Where(e => e.Name.ToLower().Contains(filterText) || filterText == null)
+                                        select new DepartmentDto
+                                        {
+                                            Name = dept.Name,
+                                            Id = dept.Id
+                                        }).ToListAsync();
             IEnumerable<DepartmentDto> departmentQuery = new List<DepartmentDto>();
             if (sortOrder == "desc")
             {
