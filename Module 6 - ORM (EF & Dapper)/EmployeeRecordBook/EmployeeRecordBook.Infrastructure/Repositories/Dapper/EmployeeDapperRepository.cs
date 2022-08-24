@@ -13,16 +13,16 @@ namespace EmployeeRecordBook.Infrastructure.Repositories.Dapper
                 _dbConnection = dbConnection;
         }
 
-        public async Task<Employee> CreateAsync (Employee employee)
+        public async Task<Employee> CreateAsync(Employee employee)
         {
             var command = "Insert Employee(Name,Email,Id,Salary) Values (@Name,@Email,@Id,@Salary)";
             var result = await _dbConnection.ExecuteAsync(command, employee);
             return employee;
         }
 
-        public Task CreateRangeAsync(IEnumerable<Employee> employees)
+        public async Task CreateRangeAsync(IEnumerable<Employee> employees)
         {
-            throw new NotImplementedException();
+            await _dbConnection.ExecuteAsync($"InsertRecord{employees}");
         }
 
         public async Task DeleteAsync(int employeeId)
@@ -33,76 +33,18 @@ namespace EmployeeRecordBook.Infrastructure.Repositories.Dapper
 
         public async Task<Employee> GetEmployeeAsync(int employeeId)
         {
-            var query = "select * from Employee where Id = @employeeId";
+            var query = "execute spGetEmployeesById";
             return (await _dbConnection.QueryAsync<Employee>(query, new { employeeId })).FirstOrDefault();
         }
         public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
         {
-            var query = "SELECT [e].[Id],[e].[Name],[e].[Salary],[e].[Name] AS [DepartmentName] FROM [Employee] AS [e] INNER JOIN [Department] as[d] ON [e].[DepartmentId]=[d].[Id]";
+            var query = "SELECT [e].[Id],[e].[Name],[e].[Salary],[e].[Name] AS [DepartmentName] FROM [Employee] AS [e] INNER JOIN [Department] AS[d] ON [e].[DepartmentId]=[d].[Id]";
             return await _dbConnection.QueryAsync<EmployeeDto>(query);
         }
 
-        public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync(int pageIndex, int pageSize, string sortField, string sortOrder = "asc", string filterText = null)
+        public Task<IEnumerable<EmployeeDto>> GetEmployeesAsync(int pageIndex, int pageSize, string sortField, string sortOrder = "asc", string filterText = null)
         {
-            var query = "select * from Employee ";
-            var employeesList = await _dbConnection.QueryAsync<EmployeeDto>(query);
-            IEnumerable<EmployeeDto> employeeQuery = new List<EmployeeDto>();
-            if (sortOrder == "desc")
-            {
-
-                switch (sortField)
-                {
-
-                    case "Id":
-                        employeeQuery = employeesList.OrderByDescending(emp => emp.Id);
-                        break;
-
-                    case "Name":
-                        employeeQuery = employeesList.OrderByDescending(emp => emp.Name);
-                        break;
-
-                    case "Email":
-                        employeeQuery = employeesList.OrderByDescending(emp => emp.Email);
-                        break;
-
-                    case "Salary":
-                        employeeQuery = employeesList.OrderByDescending(emp => emp.Salary);
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
-
-                }
-            }
-            else
-            {
-                switch (sortField)
-                {
-                    case "Id":
-                        employeeQuery = employeesList.OrderBy(emp => emp.Id);
-                        break;
-
-                    case "Name":
-                        employeeQuery = employeesList.OrderBy(emp => emp.Name);
-                        break;
-
-                    case "Email":
-                        employeeQuery = employeesList.OrderBy(emp => emp.Email);
-                        break;
-
-                    case "Salary":
-                        employeeQuery = employeesList.OrderBy(emp => emp.Salary);
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
-
-                }
-
-            }
-
-            return employeeQuery.Skip((pageIndex - 1) * pageSize).Take(pageSize);
-
+            throw new NotImplementedException();
         }
 
         public async Task<Employee>UpdateAsync(int employeeId, Employee employee)
@@ -110,6 +52,11 @@ namespace EmployeeRecordBook.Infrastructure.Repositories.Dapper
             var command = "Update Employee Set Name = @Name, Salary =@Salary Where Id = @Id";
             await _dbConnection.ExecuteAsync(command, employee);
             return employee;
+        }
+
+        Task<IEnumerable<Employee>> IEmployeeRepository.GetEmployeesAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

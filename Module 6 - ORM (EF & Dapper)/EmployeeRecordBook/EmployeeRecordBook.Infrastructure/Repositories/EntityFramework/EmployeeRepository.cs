@@ -3,7 +3,7 @@ using EmployeeRecordBook.Core.Entities;
 using EmployeeRecordBook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeRecordBook.Infrastructure.Repositories
+namespace EmployeeRecordBook.Infrastructure.Repositories.EntityFramework
 {
     public class EmployeeRepository : IEmployeeRepository
     {
@@ -23,8 +23,8 @@ namespace EmployeeRecordBook.Infrastructure.Repositories
         {
 
             _employeeContext.Employees.AddRange(employees);
-                await _employeeContext.SaveChangesAsync();
-            
+            await _employeeContext.SaveChangesAsync();
+
         }
 
         public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync(int pageIndex, int pageSize, string sortField, string sortOrder = "asc", string filterText = null)
@@ -42,10 +42,10 @@ namespace EmployeeRecordBook.Infrastructure.Repositories
             IEnumerable<EmployeeDto> employeeQuery = new List<EmployeeDto>();
             if (sortOrder == "desc")
             {
-                
+
                 switch (sortField)
-                { 
-                
+                {
+
                     case "Id":
                         employeeQuery = employeesList.OrderByDescending(emp => emp.Id);
                         break;
@@ -91,11 +91,11 @@ namespace EmployeeRecordBook.Infrastructure.Repositories
                         throw new ArgumentOutOfRangeException();
 
                 }
-                
+
             }
 
             return employeeQuery.Skip((pageIndex - 1) * pageSize).Take(pageSize);
-        }   
+        }
         //return await _employeeContext.Employees.ToListAsync();
         //return await employeeQuery.ToListAsync();  // Executes DB Query in DB and Get results.
 
@@ -121,9 +121,11 @@ namespace EmployeeRecordBook.Infrastructure.Repositories
             await _employeeContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
+        public async Task<IEnumerable<Employee>> GetEmployeesAsync()
         {
-            throw new NotImplementedException();
+            return await _employeeContext.Employees.ToListAsync();
         }
+
+       
     }
 }

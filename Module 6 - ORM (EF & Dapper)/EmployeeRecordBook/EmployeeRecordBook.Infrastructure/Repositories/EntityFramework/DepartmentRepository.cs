@@ -3,7 +3,7 @@ using EmployeeRecordBook.Core.Entities;
 using EmployeeRecordBook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeRecordBook.Infrastructure.Repositories
+namespace EmployeeRecordBook.Infrastructure.Repositories.EntityFramework
 {
     public class DepartmentRepository : IDepartmentRepository
     {
