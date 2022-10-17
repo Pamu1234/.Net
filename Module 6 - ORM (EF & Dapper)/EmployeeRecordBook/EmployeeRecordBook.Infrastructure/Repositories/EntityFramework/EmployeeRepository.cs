@@ -96,8 +96,6 @@ namespace EmployeeRecordBook.Infrastructure.Repositories.EntityFramework
 
             return employeeQuery.Skip((pageIndex - 1) * pageSize).Take(pageSize);
         }
-        //return await _employeeContext.Employees.ToListAsync();
-        //return await employeeQuery.ToListAsync();  // Executes DB Query in DB and Get results.
 
         public async Task<Employee> GetEmployeeAsync(int employeeId)
         {

@@ -1,8 +1,6 @@
-﻿using EmployeeRecordBook.Core.Dtos;
+﻿using AutoMapper;
 using EmployeeRecordBook.Core.Entities;
-using EmployeeRecordBook.Infrastructure.Data;
 using EmployeeRecordBook.Infrastructure.Repositories;
-using EmployeeRecordBook.Infrastructure.Repositories.EntityFramework;
 using EmployeeRecordBook.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,44 +14,56 @@ namespace EmployeeRecordBook.Api.Controllers
     {
 
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IMapper _mapper;
         private readonly ILogger<EmployeesController> _logger;
-        public EmployeesController(IEmployeeRepository employeeRepository, ILogger<EmployeesController> logger)
+        public EmployeesController(IEmployeeRepository employeeRepository, IMapper mapper, ILogger<EmployeesController> logger )
         {
+            _mapper = mapper;
             _employeeRepository = employeeRepository;
             _logger = logger;
+
         }
 
-
         [HttpGet]
-        public async Task<IEnumerable<Employee>> Get()
+        public async Task <ActionResult<IEnumerable< Employee>>> Get()
         {
             _logger.LogInformation("Getting list of employees");
-            return await _employeeRepository.GetEmployeesAsync();
+            var result = await _employeeRepository.GetEmployeesAsync();
+            return Ok(result);
         }
 
 
         [HttpGet("{id}")]
-        public async Task<Employee> Get(int id)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<IEnumerable<Employee>>> Get(int id)
         {
+            if(id<= 0 || id>=9999)
+                return BadRequest("Invalid Id");
             _logger.LogInformation("Get employee data  by employee id: {id}",id);
-            return await _employeeRepository.GetEmployeeAsync(id);
+            var result = await _employeeRepository.GetEmployeeAsync(id);
+            if (result == null)
+                return NotFound();
+            return Ok(result);
         }
 
 
         [HttpPost]
-        public async Task<Employee> Post([FromBody] EmployeeVm employeeVm)
+        public async Task<ActionResult<IEnumerable<Employee>>> Post([FromBody] EmployeeVm employeeVm)
         {
             var employee = new Employee { Name = employeeVm.Name, Email = employeeVm.Email, Salary = employeeVm.Salary, DepartmentId = employeeVm.DepartmentId };
-            return await _employeeRepository.CreateAsync(employee);
-
+            var result = await _employeeRepository.CreateAsync(employee);
+            return Ok(result);
         }
 
 
         [HttpPut("{id}")]
-        public async Task<Employee> Put(int id, [FromBody] EmployeeVm employeeVm)
+        public async Task<ActionResult<IEnumerable<Employee>>> Put(int id, [FromBody] EmployeeVm employeeVm)
         {
             var employee = new Employee { Id = employeeVm.Id, Name = employeeVm.Name, Email = employeeVm.Email, Salary = employeeVm.Salary, DepartmentId = employeeVm.DepartmentId };
-            return await _employeeRepository.UpdateAsync(id, employee);
+            var result = await _employeeRepository.UpdateAsync(id, employee);
+            return Ok(result);
         }
 
 

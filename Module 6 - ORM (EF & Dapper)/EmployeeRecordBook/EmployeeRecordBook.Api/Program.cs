@@ -1,40 +1,26 @@
+using AutoMapper;
+using EmployeeRecordBook.Api.Configurations;
+using EmployeeRecordBook.Api.Extensions;
 using EmployeeRecordBook.Infrastructure.Data;
 using EmployeeRecordBook.Infrastructure.Repositories;
 using EmployeeRecordBook.Infrastructure.Repositories.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#region Configure and Register AutoMapper
+var config = new MapperConfiguration(config => config.AddProfile(new AutoMapperProfile()));
+IMapper mapper = config.CreateMapper();
+builder.Services.AddSingleton<IMapper>(mapper);
+#endregion
 
-
-#region System Service Registration
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
-// Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<EmployeeContext>();
-#endregion
+builder.Services.RegisterSystemService();
+builder.Services.RegisterApplicatinService();
 
-
-#region Application Service Registration
-builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-#endregion
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.CreateMiddlewarePipeline();
 
 app.Run();
