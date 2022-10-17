@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS STYLESHEETS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/Style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-img">
+            <img class="logo"
+                src="https://www.clipartmax.com/png/small/170-1705147_a-few-of-the-reasons-orencos-a-great-place-to-be-employee.png"
+                alt="Employee_Logo">
+        </div>
+        <div class="note">
+            Welcome To Employee Management System.
+        </div>
+    </header>
+
+    <!-- MAIN-SECTION -->
+    <div class="container-fluid">
+
+        <div class="main-section row">
+            <div class="accordion col-3" id="accordionExample ">
+
+                <!-- EMPLOYEE -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Employee
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <nav>
+                                <ul class="employee-content">
+                                    <li><a href="">Add Employee</a></li>
+                                    <li><button class="emp-button"  onclick="getemployees()">Get Employee List</button></li>
+                                    <!-- <li ><a href="" onclick='getemployees()'>Get Employee List</a></li> -->
+                                    <li><a href="">Get Specific Employee</a></li>
+                                    <li><a href="">Update Employee Data</a></li>
+                                    <li><a href="">Delete Specific Employee</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEPARTMENT -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            Department
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <nav>
+                                <ul class="department-content">
+                                    <li><a href="">Add Department</a></li>
+                                    <li><a href="">Get Department List</a></li>
+                                    <li><a href="">Get Specific Department</a></li>
+                                    <li><a href="">Update Department Data</a></li>
+                                    <li><a href="">Delete Specific Department</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Leave Application
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <nav>
+                                <ul class="leave_application_content">
+                                    <li><a href="">Apply For Leave</a></li>
+                                    <li><a href="">Get Leave Application List</a></li>
+                                    <li><a href="">Get Specific Employee Leave request</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Attendance
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <nav>
+                                <ul class="attendance-content">
+                                    <li><a href="">Get Attendance List</a></li>
+                                    <li><a href="">Get Specific Employee Attendance</a></li>
+                                    <li><a href="">Clock-In</a></li>
+                                    <li><a href="">Clock-Out</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                            Leave Balance
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <nav>
+                                <ul class="leavebalance-content">
+                                    <li><a href="">Get Specific Employee Available Leaves</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="main-content col-9">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Employee ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email ID</th>
+                        <th scope="col">Contact </th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Department Name</th>
+                        <th scope="col">Role Name</th>
+                    </tr>
+                    </thead>
+                    <tbody id="employeeData">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script src="./script.js" ></script>
+</body>
+
+</html>
